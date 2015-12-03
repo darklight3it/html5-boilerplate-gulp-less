@@ -12,6 +12,8 @@ var reload      = browserSync.reload;
 var pkg = require('./package.json');
 var dirs = pkg['h5bp-configs'].directories;
 
+var gutil = require('gulp-util');
+
 // ---------------------------------------------------------------------
 // | Helper tasks                                                      |
 // ---------------------------------------------------------------------
@@ -193,7 +195,10 @@ gulp.task('compile:scripts', function(done) {
 // Styles
 gulp.task('styles', function() {
     return gulp.src(dirs.src + '/less/main.less')
-        .pipe(plugins.less())
+        .pipe(plugins.less().on('error', function (err){
+            gutil.log(err);
+            this.emit('end');
+        }))
         .pipe(plugins.autoprefixer())
         // .pipe(gulp.dest(dirs.src + '/css'))
         .pipe(plugins.rename({ suffix: '.min' }))
