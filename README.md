@@ -87,4 +87,4 @@ Production ready version
 
 ###Copyright and license
 
-Copyright 2014-2015 Tomasz Bujnowicz under the [MIT license](http://opensource.org/licenses/MIT).
+Copyright 2014-2015 under the [MIT license](http://opensource.org/licenses/MIT).
